@@ -21,18 +21,16 @@ export default {
 
       {
         tier: "jackpot",
-        cmd: "give {player} minecraft:beacon 4 && give {player} minecraft:netherite_block 1 && give {player} minecraft:diamond_block 12 && give {player} minecraft:gold_block 16 && give {player} minecraft:iron_block 32",
+        cmd: "give {player} minecraft:beacon 4 && give {player} minecraft:netherite_block 1 && give {player} minecraft:diamond_block 12 && give {player} minecraft:gold_block 16 && give {player} minecraft:iron_block 32 && give {player} minecraft:mace[minecraft:enchantments={levels:{\"minecraft:wind_burst\":1,\"minecraft:unbreaking\":3,\"minecraft:density\":5,\"minecraft:mending\":1}}] 1",
         chance: 10
       }
     ]
   },
 
   cooldowns: {
-    // seconds between counted messages (anti-spam for economy)
     message: 5
   },
 
-  // Per-user guaranteed minimum tier. Tiers are ordered weakest -> strongest.
   guaranteedRewards: {
     guaranteedCommonPlus:   { enabled: false, userId: "1274645481217327108" },
     guaranteedUncommonPlus: { enabled: false, userId: "1274645481217327108" },
