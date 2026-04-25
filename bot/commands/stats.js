@@ -1,6 +1,6 @@
 import { SlashCommandBuilder } from "discord.js";
-import { getStats } from "../systems/shopSystem.js";
-import { getMCName } from "../systems/verifySystem.js";
+import { getStats } from "../core/shopSystem.js";
+import { getMCName } from "../core/verifySystem.js";
 import { logError } from "../utils/logger.js";
 
 export default {
