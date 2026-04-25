@@ -4,7 +4,10 @@ import { logError } from "../utils/logger.js";
 import db from "../core/database.js";
 
 const MAX_PRESTIGE = 5;
-const LUCK_PER_PRESTIGE = 0.25;
+
+function luckGain(nextLevel) {
+  return nextLevel * 0.25;
+}
 
 function prestigeCost(level) {
   return {
@@ -16,7 +19,7 @@ function prestigeCost(level) {
 export default {
   data: new SlashCommandBuilder()
     .setName("prestige")
-    .setDescription("Spend messages and rolls for a permanent +0.25 luck boost (max 5 times)"),
+    .setDescription("Spend messages and rolls for a scaling permanent luck boost (max 5 times)"),
 
   async execute(interaction) {
     try {
@@ -24,13 +27,16 @@ export default {
       const currentPrestige = parseInt(await getSetting(`prestige_${userId}`, "0")) || 0;
 
       if (currentPrestige >= MAX_PRESTIGE) {
+        const totalLuck = Array.from({ length: MAX_PRESTIGE }, (_, i) => luckGain(i + 1))
+          .reduce((a, b) => a + b, 0);
         return interaction.editReply(
-          `You've reached max prestige (**${MAX_PRESTIGE}**) with a total of **+${(currentPrestige * LUCK_PER_PRESTIGE).toFixed(2)} luck** from prestige.`
+          `You've reached max prestige (**${MAX_PRESTIGE}**) with **+${totalLuck.toFixed(2)} total luck** from prestige.`
         );
       }
 
       const cost      = prestigeCost(currentPrestige);
       const nextLevel = currentPrestige + 1;
+      const gain      = luckGain(nextLevel);
 
       const client = await db.connect();
       try {
@@ -55,7 +61,7 @@ export default {
               `• **${cost.messages}** messages — you have ${have.messages}`,
               `• **${cost.rolls}** rolls — you have ${have.rolls}`,
               ``,
-              `Reward: **+${LUCK_PER_PRESTIGE} permanent luck multiplier**`
+              `Reward: **+${gain.toFixed(2)} permanent luck multiplier**`
             ].join("\n")
           );
         }
@@ -67,20 +73,21 @@ export default {
                luck_multiplier = luck_multiplier + $3,
                updated_at      = NOW()
            WHERE discord_id = $4`,
-          [cost.messages, cost.rolls, LUCK_PER_PRESTIGE, userId]
+          [cost.messages, cost.rolls, gain, userId]
         );
 
         await client.query("COMMIT");
         await setSetting(`prestige_${userId}`, String(nextLevel));
 
         const nextCost = nextLevel < MAX_PRESTIGE ? prestigeCost(nextLevel) : null;
+        const nextGain = nextLevel < MAX_PRESTIGE ? luckGain(nextLevel + 1) : null;
         return interaction.editReply(
           [
             `Prestiged to **Level ${nextLevel}**!`,
             `Spent **${cost.messages} messages** and **${cost.rolls} rolls**.`,
-            `You gained **+${LUCK_PER_PRESTIGE} permanent luck multiplier**.`,
+            `You gained **+${gain.toFixed(2)} permanent luck multiplier**.`,
             nextCost
-              ? `Next prestige costs **${nextCost.messages} messages** and **${nextCost.rolls} rolls**.`
+              ? `Next prestige costs **${nextCost.messages} messages** and **${nextCost.rolls} rolls** for **+${nextGain.toFixed(2)} luck**.`
               : `You've reached the maximum prestige level!`
           ].join("\n")
         );
