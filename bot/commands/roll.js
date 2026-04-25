@@ -42,7 +42,6 @@ export default {
         );
       }
 
-      // Single roll — detailed response
       if (amount === 1) {
         const consumed = await consumeRoll(userId);
         if (!consumed) return interaction.editReply("Could not use a roll. Try again.");
@@ -65,7 +64,6 @@ export default {
         );
       }
 
-      // Multi roll — compact response
       const lines = [];
       for (let i = 0; i < amount; i++) {
         const consumed = await consumeRoll(userId);
