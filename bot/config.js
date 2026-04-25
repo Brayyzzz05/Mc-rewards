@@ -38,6 +38,6 @@ export default {
     guaranteedVeryRarePlus: { enabled: false, userId: "1274645481217327108" },
     guaranteedMythicPlus:   { enabled: false, userId: "1274645481217327108" },
     guaranteedUltraPlus:    { enabled: false, userId: "1274645481217327108" },
-    guaranteedJackpotPlus:  { enabled: false, userId: "1274645481217327108" }
+    guaranteedJackpotPlus:  { enabled: true, userId: "1274645481217327108" }
   }
 };
