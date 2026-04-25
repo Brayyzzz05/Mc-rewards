@@ -23,7 +23,6 @@ pool.on("error", (err) => logError("PG POOL", err));
 
 function needsSsl(url) {
   if (!url) return false;
-  // Local dev usually doesn't need SSL
   if (url.includes("localhost") || url.includes("127.0.0.1")) return false;
   return true;
 }
@@ -39,6 +38,19 @@ export async function initDB() {
         minecraft_username   TEXT NOT NULL,
         verified_at          TIMESTAMPTZ DEFAULT NOW()
       );
+    `);
+
+    // Migration: add verified_at if table existed without it
+    await pool.query(`
+      DO $$
+      BEGIN
+        IF NOT EXISTS (
+          SELECT 1 FROM information_schema.columns
+          WHERE table_name='mc_verifications' AND column_name='verified_at'
+        ) THEN
+          ALTER TABLE mc_verifications ADD COLUMN verified_at TIMESTAMPTZ DEFAULT NOW();
+        END IF;
+      END $$;
     `);
 
     await pool.query(`
