@@ -28,29 +28,32 @@ export default {
   async execute(interaction) {
     try {
       const userId = interaction.user.id;
-      const [s, mc, dailyStr, weeklyStr, prestigeStr] = await Promise.all([
+      const [s, mc, dailyStr, weeklyStr, prestigeStr, streakStr] = await Promise.all([
         getStats(userId),
         getMCName(userId),
-        getSetting(`daily_${userId}`, null),
-        getSetting(`weekly_${userId}`, null),
-        getSetting(`prestige_${userId}`, "0")
+        getSetting(`daily_${userId}`,   null),
+        getSetting(`weekly_${userId}`,  null),
+        getSetting(`prestige_${userId}`, "0"),
+        getSetting(`streak_${userId}`,   "0")
       ]);
 
       const messages = s?.messages ?? 0;
       const rolls    = s?.rolls    ?? 0;
       const luck     = s?.luck_multiplier ?? 1;
       const prestige = parseInt(prestigeStr) || 0;
+      const streak   = parseInt(streakStr)   || 0;
 
       return interaction.editReply(
         [
           `**Your Stats**`,
           `Minecraft:       ${mc ? `\`${mc}\`` : "_not verified_"}`,
           `Prestige:        **${prestige}/5**`,
+          `Daily streak:    **${streak} day${streak !== 1 ? "s" : ""}**`,
           `Messages:        **${messages}**`,
           `Rolls:           **${rolls}**`,
           `Luck multiplier: **${luck.toFixed(2)}x**`,
           ``,
-          `Daily:           **${timeLeft(dailyStr, DAILY_COOLDOWN_MS)}**`,
+          `Daily:           **${timeLeft(dailyStr,  DAILY_COOLDOWN_MS)}**`,
           `Weekly:          **${timeLeft(weeklyStr, WEEKLY_COOLDOWN_MS)}**`
         ].join("\n")
       );
