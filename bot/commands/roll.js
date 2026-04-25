@@ -1,8 +1,8 @@
 import { SlashCommandBuilder } from "discord.js";
-import { rollReward } from "../systems/rollEngine.js";
-import { getMCName } from "../systems/verifySystem.js";
-import { deliverReward } from "../systems/rewardSystem.js";
-import { consumeRoll, getStats } from "../systems/shopSystem.js";
+import { rollReward } from "../core/rollEngine.js";
+import { getMCName } from "../core/verifySystem.js";
+import { deliverReward } from "../core/rewardSystem.js";
+import { consumeRoll, getStats } from "../core/shopSystem.js";
 import { logError } from "../utils/logger.js";
 
 const TIER_LABEL = {
