@@ -50,10 +50,3 @@ export async function isVerified(discordId) {
   } catch (err) {
     logError("isVerified", err);
     return false;
-  }
-}
-
-// Basic Minecraft username validation (Java edition rules: 3-16 chars, [A-Za-z0-9_])
-export function isValidMcName(name) {
-  return typeof name === "string" && /^[A-Za-z0-9_]{3,16}$/.test(name);
-}
