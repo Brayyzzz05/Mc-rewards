@@ -1,12 +1,11 @@
 import db from "../core/database.js";
 import { logError } from "../utils/logger.js";
 
-// Costs are in messages. Each item adds rolls and/or luck multiplier.
 const COST_MAP = {
-  roll:   { cost: 20,  apply: { rolls: 1, luck: 0   } },
-  roll5:  { cost: 80,  apply: { rolls: 5, luck: 0   } },
-  luck1:  { cost: 100, apply: { rolls: 0, luck: 0.1 } },
-  luck5:  { cost: 400, apply: { rolls: 0, luck: 0.5 } }
+  roll:   { cost: 5,  apply: { rolls: 1, luck: 0.0 } },
+  roll5:  { cost: 20, apply: { rolls: 5, luck: 0.0 } },
+  luck1:  { cost: 25, apply: { rolls: 0, luck: 0.1 } },
+  luck2:  { cost: 50, apply: { rolls: 0, luck: 0.2 } }
 };
 
 export const SHOP_ITEMS = COST_MAP;
