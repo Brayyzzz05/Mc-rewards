@@ -11,9 +11,6 @@ if (!process.env.DATABASE_URL) {
   process.exit(1);
 }
 
-// =====================
-// SINGLE SHARED POOL
-// =====================
 const pool = new Pool({
   connectionString: process.env.DATABASE_URL,
   ssl: needsSsl(process.env.DATABASE_URL) ? { rejectUnauthorized: false } : false
@@ -27,9 +24,6 @@ function needsSsl(url) {
   return true;
 }
 
-// =====================
-// SCHEMA INIT
-// =====================
 export async function initDB() {
   try {
     await pool.query(`
@@ -40,7 +34,6 @@ export async function initDB() {
       );
     `);
 
-    // Migration: add verified_at if table existed without it
     await pool.query(`
       DO $$
       BEGIN
@@ -63,7 +56,6 @@ export async function initDB() {
       );
     `);
 
-    // Migrations from v1 schema (spins -> rolls, luck -> luck_multiplier)
     await pool.query(`
       DO $$
       BEGIN
@@ -103,6 +95,24 @@ export async function initDB() {
     `);
 
     await pool.query(`
+      DO $$
+      BEGIN
+        IF NOT EXISTS (
+          SELECT 1 FROM information_schema.columns
+          WHERE table_name='reward_logs' AND column_name='tier'
+        ) THEN
+          ALTER TABLE reward_logs ADD COLUMN tier TEXT;
+        END IF;
+        IF NOT EXISTS (
+          SELECT 1 FROM information_schema.columns
+          WHERE table_name='reward_logs' AND column_name='minecraft_username'
+        ) THEN
+          ALTER TABLE reward_logs ADD COLUMN minecraft_username TEXT;
+        END IF;
+      END $$;
+    `);
+
+    await pool.query(`
       CREATE TABLE IF NOT EXISTS shop_transactions (
         id           SERIAL PRIMARY KEY,
         discord_id   TEXT,
@@ -134,6 +144,48 @@ export async function initDB() {
         created_at          TIMESTAMPTZ DEFAULT NOW(),
         updated_at          TIMESTAMPTZ DEFAULT NOW()
       );
+    `);
+
+    await pool.query(`
+      DO $$
+      BEGIN
+        IF NOT EXISTS (
+          SELECT 1 FROM information_schema.columns
+          WHERE table_name='reward_queue' AND column_name='minecraft_username'
+        ) THEN
+          ALTER TABLE reward_queue ADD COLUMN minecraft_username TEXT;
+        END IF;
+        IF NOT EXISTS (
+          SELECT 1 FROM information_schema.columns
+          WHERE table_name='reward_queue' AND column_name='reward_hash'
+        ) THEN
+          ALTER TABLE reward_queue ADD COLUMN reward_hash TEXT;
+        END IF;
+        IF NOT EXISTS (
+          SELECT 1 FROM information_schema.columns
+          WHERE table_name='reward_queue' AND column_name='attempts'
+        ) THEN
+          ALTER TABLE reward_queue ADD COLUMN attempts INTEGER NOT NULL DEFAULT 0;
+        END IF;
+        IF NOT EXISTS (
+          SELECT 1 FROM information_schema.columns
+          WHERE table_name='reward_queue' AND column_name='last_error'
+        ) THEN
+          ALTER TABLE reward_queue ADD COLUMN last_error TEXT;
+        END IF;
+        IF NOT EXISTS (
+          SELECT 1 FROM information_schema.columns
+          WHERE table_name='reward_queue' AND column_name='created_at'
+        ) THEN
+          ALTER TABLE reward_queue ADD COLUMN created_at TIMESTAMPTZ DEFAULT NOW();
+        END IF;
+        IF NOT EXISTS (
+          SELECT 1 FROM information_schema.columns
+          WHERE table_name='reward_queue' AND column_name='updated_at'
+        ) THEN
+          ALTER TABLE reward_queue ADD COLUMN updated_at TIMESTAMPTZ DEFAULT NOW();
+        END IF;
+      END $$;
     `);
 
     await pool.query(`
