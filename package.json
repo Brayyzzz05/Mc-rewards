@@ -1,0 +1,20 @@
+{
+  "name": "mc-rewards-bot",
+  "version": "2.0.0",
+  "type": "module",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "deploy": "node core/deployCommands.js"
+  },
+  "dependencies": {
+    "discord.js": "^14.16.3",
+    "dotenv": "^16.4.5",
+    "pg": "^8.13.1",
+    "rcon-client": "^4.2.5"
+  },
+  "engines": {
+
+   "node": ">=18"
+  }
+}
