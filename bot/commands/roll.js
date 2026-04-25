@@ -18,11 +18,17 @@ const TIER_LABEL = {
 export default {
   data: new SlashCommandBuilder()
     .setName("roll")
-    .setDescription("Roll for a Minecraft reward (uses 1 roll)"),
+    .setDescription("Roll for a Minecraft reward")
+    .addIntegerOption(o =>
+      o.setName("amount")
+        .setDescription("How many rolls to use at once (default 1, max 10)")
+        .setMinValue(1).setMaxValue(10).setRequired(false)
+    ),
 
   async execute(interaction) {
     try {
       const userId = interaction.user.id;
+      const amount = interaction.options.getInteger("amount") ?? 1;
 
       const mcName = await getMCName(userId);
       if (!mcName) {
@@ -30,35 +36,52 @@ export default {
       }
 
       const stats = await getStats(userId);
-      if (!stats || stats.rolls < 1) {
+      if (!stats || stats.rolls < amount) {
         return interaction.editReply(
-          "You have no rolls. Earn messages by chatting, then buy rolls with `/shop buy item:roll`."
+          `You don't have enough rolls. You have **${stats?.rolls ?? 0}**, need **${amount}**.`
         );
       }
 
-      const consumed = await consumeRoll(userId);
-      if (!consumed) {
-        return interaction.editReply("Could not use a roll. Try again.");
+      // Single roll — detailed response
+      if (amount === 1) {
+        const consumed = await consumeRoll(userId);
+        if (!consumed) return interaction.editReply("Could not use a roll. Try again.");
+
+        const result   = await rollReward(userId, mcName);
+        const delivery = await deliverReward(userId, mcName, result.cmd, result.tier);
+        const tierTxt  = TIER_LABEL[result.tier] || result.tier;
+
+        const queuedReason =
+          delivery.reason === "server_offline"
+            ? "Server is offline — your reward is queued and will arrive when it's back online."
+            : delivery.reason === "player_offline"
+              ? "You're not online in-game — your reward is queued and will be delivered when you log in."
+              : "Your reward is queued.";
+
+        return interaction.editReply(
+          `**${tierTxt}** rolled for **${mcName}**\n\`${result.cmd}\`\n${
+            delivery.delivered ? "Sent in-game now." : delivery.queued ? queuedReason : "Could not queue reward, contact an admin."
+          }`
+        );
       }
 
-      const result = await rollReward(userId, mcName);
-      const delivery = await deliverReward(userId, mcName, result.cmd, result.tier);
+      // Multi roll — compact response
+      const lines = [];
+      for (let i = 0; i < amount; i++) {
+        const consumed = await consumeRoll(userId);
+        if (!consumed) { lines.push(`Roll ${i + 1}: Could not use roll.`); break; }
 
-      const tierTxt = TIER_LABEL[result.tier] || result.tier || "Reward";
-      const queuedReason =
-        delivery.reason === "server_offline"
-          ? "Server is offline — your reward is queued and will arrive when it's back online."
-          : delivery.reason === "player_offline"
-            ? "You're not online in-game right now — your reward is queued and will be delivered the moment you log in."
-            : "Your reward is queued.";
-      const status = delivery.delivered
-        ? "Sent in-game now."
-        : delivery.queued
-          ? queuedReason
-          : "Could not queue reward, contact an admin.";
+        const result   = await rollReward(userId, mcName);
+        const delivery = await deliverReward(userId, mcName, result.cmd, result.tier);
+        const tierTxt  = TIER_LABEL[result.tier] || result.tier;
+        const status   = delivery.delivered ? "delivered" : delivery.queued ? "queued" : "failed";
+        const shortCmd = result.cmd.length > 55 ? result.cmd.slice(0, 55) + "..." : result.cmd;
+
+        lines.push(`**${tierTxt}** — \`${shortCmd}\` *(${status})*`);
+      }
 
       return interaction.editReply(
-        `🎰 **${tierTxt}** rolled for **${mcName}**\n\`${result.cmd}\`\n${status}`
+        [`**${amount} rolls** for **${mcName}**:`, "", ...lines].join("\n")
       );
     } catch (err) {
       logError("ROLL COMMAND", err);
