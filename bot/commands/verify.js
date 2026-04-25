@@ -7,7 +7,7 @@ async function mojangLookup(name) {
     const r = await fetch(`https://api.mojang.com/users/profiles/minecraft/${encodeURIComponent(name)}`);
     if (r.status === 200) {
       const j = await r.json();
-      return j?.name || null; // canonical case from Mojang
+      return j?.name || null;
     }
     return null;
   } catch {
@@ -34,7 +34,7 @@ export default {
     try {
       const userId  = interaction.user.id;
       const name    = interaction.options.getString("username", true).trim();
-      const typeOpt = interaction.options.getString("type"); // "premium" | "cracked" | null
+      const typeOpt = interaction.options.getString("type");
 
       if (!isValidMcName(name)) {
         return interaction.editReply("Invalid Minecraft username.");
@@ -43,7 +43,6 @@ export default {
       let mode = typeOpt;
       let canonical = name;
 
-      // If premium or auto-detect, try Mojang
       if (mode === "premium" || mode === null) {
         const found = await mojangLookup(name);
         if (found) {
@@ -54,11 +53,10 @@ export default {
             `No premium account found for **${name}**. Re-run with \`type: cracked\` if this is an offline account.`
           );
         } else {
-          mode = "cracked"; // auto-detect fallback
+          mode = "cracked";
         }
       }
 
-      // Both paths just save the link — no in-game step
       const ok = await verifyMC(userId, canonical);
       if (!ok) return interaction.editReply("Could not save your verification. Try again later.");
 
