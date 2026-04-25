@@ -6,7 +6,7 @@ import path from "path";
 import db, { initDB } from "./core/database.js";
 import { connectRcon } from "./core/rconHandler.js";
 import { deployCommands } from "./core/deployCommands.js";
-import { startRewardWorker } from "./systems/rewardQueueWorker.js";
+import { startRewardWorker } from "./core/rewardQueueWorker.js";
 import config from "./config.js";
 import { logError, logInfo, logWarn } from "./utils/logger.js";
 
