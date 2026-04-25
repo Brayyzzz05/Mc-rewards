@@ -58,12 +58,14 @@ export default {
         }
       }
 
-      // Both paths now just save the link — no in-game step
+      // Both paths just save the link — no in-game step
       const ok = await verifyMC(userId, canonical);
       if (!ok) return interaction.editReply("Could not save your verification. Try again later.");
 
       const tag = mode === "premium" ? "premium" : "cracked";
-      return interaction.editReply(`Linked **${canonical}** to your Discord (${tag}). You can now use \`/roll\`.`);
+      return interaction.editReply(
+        `Linked **${canonical}** to your Discord (${tag}). You can now use \`/roll\`.`
+      );
     } catch (err) {
       logError("VERIFY COMMAND", err);
       return interaction.editReply("Verification failed.");
