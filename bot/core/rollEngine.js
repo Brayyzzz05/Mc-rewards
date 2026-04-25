@@ -12,6 +12,30 @@ const TIER_RANK = {
   jackpot: 7
 };
 
+const GUARANTEED_MAP = {
+  guaranteedCommonPlus:   "common",
+  guaranteedUncommonPlus: "uncommon",
+  guaranteedRarePlus:     "rare",
+  guaranteedVeryRarePlus: "veryrare",
+  guaranteedMythicPlus:   "mythic",
+  guaranteedUltraPlus:    "ultra",
+  guaranteedJackpotPlus:  "jackpot"
+};
+
+function minTierForUser(userId) {
+  let best = 0;
+  for (const [key, tier] of Object.entries(GUARANTEED_MAP)) {
+    const g = config.guaranteedRewards?.[key];
+    if (!g?.enabled) continue;
+    // Support either a single userId string or an array of userIds
+    const ids = Array.isArray(g.userId) ? g.userId : [g.userId];
+    if (ids.includes(userId)) {
+      best = Math.max(best, TIER_RANK[tier] || 0);
+    }
+  }
+  return best;
+}
+
 export async function rollReward(userId, mcName) {
   const pool = config.reward.pool;
 
@@ -20,9 +44,7 @@ export async function rollReward(userId, mcName) {
   const userLuck = Math.max(0.1, await getUserLuck(userId));
   const luck = globalLuck * userLuck;
 
-  // Check DB for guaranteed minimum tier (set via /admin setguarantee)
-  const dbGuarantee = await getSetting(`guarantee_${userId}`, null);
-  const minRank = dbGuarantee && TIER_RANK[dbGuarantee] ? TIER_RANK[dbGuarantee] : 0;
+  const minRank = minTierForUser(userId);
 
   const eligible = pool.filter(r => (TIER_RANK[r.tier] || 0) >= minRank);
   const usePool = eligible.length ? eligible : pool;
