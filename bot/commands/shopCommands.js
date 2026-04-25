@@ -1,5 +1,5 @@
 import { SlashCommandBuilder } from "discord.js";
-import { buyItem, SHOP_ITEMS } from "../systems/shopSystem.js";
+import { buyItem, SHOP_ITEMS } from "../core/shopSystem.js";
 import { logError } from "../utils/logger.js";
 
 const ITEM_CHOICES = Object.keys(SHOP_ITEMS).map(k => ({ name: k, value: k }));
