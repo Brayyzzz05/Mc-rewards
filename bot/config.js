@@ -21,8 +21,8 @@ export default {
 
         {
           tier: "jackpot",
-          cmd: "give {player} minecraft:beacon 4 && give {player} minecraft:netherite_block 1 && give {player} minecraft:diamond_block 12 && give {player} minecraft:gold_block 16 && give {player} minecraft:iron_block 32 && give {player} minecraft:mace[minecraft:enchantments={levels:{'minecraft:wind_burst':1,'minecraft:unbreaking':3,'minecraft:density':5,'minecraft:mending':1}}] 1",
-          chance: 10
+          cmd: "give {player} minecraft:beacon 4 && give {player} minecraft:netherite_block 1 && give {player} minecraft:diamond_block 12 && give {player} minecraft:gold_block 16 && give {player} minecraft:iron_block 32 && give {player} mace[custom_name='LuckyMACE',enchantments={density:5,wind_burst:1,unbreaking:3,mending:1}] 1",
+          chance: 0.25385
         }
       ]
     },
