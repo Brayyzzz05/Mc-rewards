@@ -27,7 +27,6 @@ function minTierForUser(userId) {
   for (const [key, tier] of Object.entries(GUARANTEED_MAP)) {
     const g = config.guaranteedRewards?.[key];
     if (!g?.enabled) continue;
-    // Support either a single userId string or an array of userIds
     const ids = Array.isArray(g.userId) ? g.userId : [g.userId];
     if (ids.includes(userId)) {
       best = Math.max(best, TIER_RANK[tier] || 0);
@@ -39,18 +38,24 @@ function minTierForUser(userId) {
 export async function rollReward(userId, mcName) {
   const pool = config.reward.pool;
 
-  const globalLuckRaw = await getSetting("luck_multiplier", "1");
-  const globalLuck = Math.max(0.1, parseFloat(globalLuckRaw) || 1);
-  const userLuck = Math.max(0.1, await getUserLuck(userId));
-  const luck = globalLuck * userLuck;
+  const [globalLuckRaw, userLuck, luckyHourActive, luckyHourMultRaw] = await Promise.all([
+    getSetting("luck_multiplier",    "1"),
+    getUserLuck(userId),
+    getSetting("luckyhour_active",   "false"),
+    getSetting("luckyhour_multiplier", "5")
+  ]);
+
+  const globalLuck     = Math.max(0.1, parseFloat(globalLuckRaw) || 1);
+  const luckyHourMult  = luckyHourActive === "true" ? Math.max(1, parseFloat(luckyHourMultRaw) || 5) : 1;
+  const luck           = Math.max(0.1, globalLuck * userLuck) * luckyHourMult;
 
   const minRank = minTierForUser(userId);
 
   const eligible = pool.filter(r => (TIER_RANK[r.tier] || 0) >= minRank);
-  const usePool = eligible.length ? eligible : pool;
+  const usePool  = eligible.length ? eligible : pool;
 
   const weighted = usePool.map(r => {
-    const rank = TIER_RANK[r.tier] || 1;
+    const rank  = TIER_RANK[r.tier] || 1;
     const boost = luck > 1 ? Math.pow(luck, Math.max(0, rank - 1) * 0.5) : 1;
     return { ...r, weight: r.chance * boost };
   });
