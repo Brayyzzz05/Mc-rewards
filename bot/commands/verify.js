@@ -1,5 +1,5 @@
 import { SlashCommandBuilder } from "discord.js";
-import { verifyMC, isValidMcName } from "../systems/verifySystem.js";
+import { verifyMC, isValidMcName } from "../core/verifySystem.js";
 import { logError } from "../utils/logger.js";
 
 export default {
