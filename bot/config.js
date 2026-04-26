@@ -29,7 +29,10 @@ export default {
         // ── A-TIER  (2.7%) ───────────────────────────────────────────────
         { tier: "a", cmd: "give {player} totem_of_undying 2",                                                                                                                  chance: 17000 },
         { tier: "a", cmd: "give {player} enchanted_book[stored_enchantments={mending:1}] 1",                                                                                   chance: 13000 },
-        { tier: "a", cmd: "give {player} diamond_chestplate[enchantments={protection:4,unbreaking:3,mending:1}] 1",                                                           chance: 10000 },
+        { tier: "a", cmd: "give {player} diamond_chestplate[enchantments={protection:4,unbreaking:3,mending:1}] 1",                                                            chance: 10000 },
+        { tier: "a", cmd: "give {player} diamond_leggings[enchantments={protection:4,unbreaking:3,mending:1}] 1",                                                            chance: 10000 },
+        { tier: "a", cmd: "give {player} diamond_helmet[enchantments={protection:4,unbreaking:3,mending:1}] 1",                                                            chance: 10000 },
+        { tier: "a", cmd: "give {player} diamond_boots[enchantments={protection:4,unbreaking:3,mending:1}] 1",                                                            chance: 10000 },
         { tier: "a", cmd: "give {player} golden_apple 32",                                                                                                                     chance: 8000 },
         { tier: "a", cmd: "give {player} ancient_debris 16",                                                                                                                   chance: 3000 },
         { tier: "a", cmd: "give {player} breeze_rod 64",                                                                                                                          chance: 5000 },
