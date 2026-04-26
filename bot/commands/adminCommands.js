@@ -64,6 +64,11 @@ import { SlashCommandBuilder, PermissionFlagsBits } from "discord.js";
             .addIntegerOption(o => o.setName("amount").setDescription("Exact roll count to set").setRequired(true).setMinValue(0))
         )
         .addSubcommand(s =>
+          s.setName("resetrolls")
+            .setDescription("Reset a user's rolls back to 0")
+            .addUserOption(o => o.setName("user").setDescription("Target user").setRequired(true))
+        )
+        .addSubcommand(s =>
           s.setName("givemessages")
             .setDescription("Give messages (currency) to a user")
             .addUserOption(o => o.setName("user").setDescription("Target user").setRequired(true))
@@ -148,6 +153,16 @@ import { SlashCommandBuilder, PermissionFlagsBits } from "discord.js";
               [user.id, amount]
             );
             return interaction.editReply(`Set <@${user.id}>'s rolls to **${amount}**`);
+          }
+
+          if (sub === "resetrolls") {
+            const user = interaction.options.getUser("user", true);
+            await db.query(
+              `INSERT INTO user_stats (discord_id, rolls) VALUES ($1, 0)
+               ON CONFLICT (discord_id) DO UPDATE SET rolls = 0, updated_at = NOW()`,
+              [user.id]
+            );
+            return interaction.editReply(`Reset <@${user.id}>'s rolls to **0**`);
           }
 
           if (sub === "setuserluck") {
