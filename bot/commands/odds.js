@@ -1,7 +1,7 @@
 import { SlashCommandBuilder } from "discord.js";
   import config from "../config.js";
 
-  const TIER_ORDER = ["d", "c", "b", "a", "s", "jackpot"];
+  const TIER_ORDER = ["d", "c", "b", "a", "s", "jackpot", "secret"];
 
   const TIER_LABEL = {
     d:       "D-Tier",
@@ -9,7 +9,8 @@ import { SlashCommandBuilder } from "discord.js";
     b:       "B-Tier",
     a:       "A-Tier",
     s:       "S-Tier",
-    jackpot: "Jackpot"
+    jackpot: "Jackpot",
+  secret:  "[ Secret ]"
   };
 
   export default {
