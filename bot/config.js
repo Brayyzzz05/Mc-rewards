@@ -27,16 +27,16 @@ export default {
         { tier: "b", cmd: "give {player} bow[enchantments={power:3,unbreaking:3}] 1 && give {player} arrow 32",                                                               chance: 6000 },
 
         // ── A-TIER  (2.7%) ───────────────────────────────────────────────
-        { tier: "a", cmd: "give {player} totem_of_undying 2",                                                                                                                  chance: 17000 },
-        { tier: "a", cmd: "give {player} enchanted_book[stored_enchantments={mending:1}] 1",                                                                                   chance: 13000 },
-        { tier: "a", cmd: "give {player} diamond_chestplate[enchantments={protection:4,unbreaking:3,mending:1}] 1",                                                            chance: 10000 },
-        { tier: "a", cmd: "give {player} diamond_leggings[enchantments={protection:4,unbreaking:3,mending:1}] 1",                                                            chance: 10000 },
-        { tier: "a", cmd: "give {player} diamond_helmet[enchantments={protection:4,unbreaking:3,mending:1}] 1",                                                            chance: 10000 },
-        { tier: "a", cmd: "give {player} diamond_boots[enchantments={protection:4,unbreaking:3,mending:1}] 1",                                                            chance: 10000 },
-        { tier: "a", cmd: "give {player} golden_apple 32",                                                                                                                     chance: 8000 },
-        { tier: "a", cmd: "give {player} ancient_debris 16",                                                                                                                   chance: 3000 },
-        { tier: "a", cmd: "give {player} breeze_rod 64",                                                                                                                          chance: 5000 },
-        { tier: "a", cmd: "give {player} potion[potion_contents={potion:'minecraft:strength'}] 4 && give {player} potion[potion_contents={potion:'minecraft:instant_health'}] 4 && give {player} potion[potion_contents={potion:'minecraft:fire_resistance'}] 4", chance: 2000 },
+        { tier: "a", cmd: "give {player} totem_of_undying 2",                                                                                                                  chance: 3804 },
+        { tier: "a", cmd: "give {player} enchanted_book[stored_enchantments={mending:1}] 1",                                                                                   chance: 2908 },
+        { tier: "a", cmd: "give {player} diamond_chestplate[enchantments={protection:4,unbreaking:3,mending:1}] 1",                                                            chance: 2237 },
+        { tier: "a", cmd: "give {player} diamond_leggings[enchantments={protection:4,unbreaking:3,mending:1}] 1",                                                            chance: 2237 },
+        { tier: "a", cmd: "give {player} diamond_helmet[enchantments={protection:4,unbreaking:3,mending:1}] 1",                                                            chance: 2237 },
+        { tier: "a", cmd: "give {player} diamond_boots[enchantments={protection:4,unbreaking:3,mending:1}] 1",                                                            chance: 2237 },
+        { tier: "a", cmd: "give {player} golden_apple 32",                                                                                                                     chance: 1790 },
+        { tier: "a", cmd: "give {player} ancient_debris 16",                                                                                                                   chance: 671 },
+        { tier: "a", cmd: "give {player} breeze_rod 64",                                                                                                                          chance: 1119 },
+        { tier: "a", cmd: "give {player} potion[potion_contents={potion:'minecraft:strength'}] 4 && give {player} potion[potion_contents={potion:'minecraft:instant_health'}] 4 && give {player} potion[potion_contents={potion:'minecraft:fire_resistance'}] 4", chance: 447 },
 
         // ── S-TIER — God Weapons ─────────────────────────────────────────
         { tier: "s", cmd: "give {player} netherite_sword[custom_name='God Sword',enchantments={sharpness:5,looting:3,fire_aspect:2,unbreaking:3,mending:1}] 1",              chance: 485 },
