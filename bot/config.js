@@ -44,10 +44,11 @@ export default {
           // ── S-TIER — God Weapons ─────────────────────────────────────────
         { tier: "s", cmd: "give {player} netherite_sword[custom_name='God Sword',enchantments={sharpness:5,looting:3,fire_aspect:2,unbreaking:3,mending:1}] 1",              chance: 485 },
         { tier: "s", cmd: "give {player} netherite_axe[custom_name='God Axe',enchantments={sharpness:5,efficiency:5,unbreaking:3,mending:1}] 1",                             chance: 388 },
+        { tier: "s", cmd: "give {player} netherite_spear[custom_name='God Spear',enchantments={lunge:3,unbreaking:3,mending:1}] 1",                                       chance: 485 },
         { tier: "s", cmd: "give {player} bow[custom_name='God Bow',enchantments={power:5,flame:1,infinity:1,unbreaking:3}] 1",                                               chance: 291 },
         { tier: "s", cmd: "give {player} crossbow[custom_name='God Crossbow',enchantments={quick_charge:3,multishot:1,unbreaking:3}] 1",                                     chance: 194 },
-        { tier: "s", cmd: "give {player} trident[custom_name='God Trident',enchantments={riptide:3,unbreaking:3,mending:1}] 1",                                              chance: 485 },
-        { tier: "s", cmd: "give {player} trident[custom_name='God Trident',enchantments={loyalty:3,channeling:1,impaling:5,unbreaking:3,mending:1}] 1",                      chance: 485 },
+        { tier: "s", cmd: "give {player} trident[custom_name='God Trident',enchantments={riptide:3,unbreaking:3,mending:1}] 1",                                              chance: 100 },
+        { tier: "s", cmd: "give {player} trident[custom_name='God Trident',enchantments={loyalty:3,channeling:1,impaling:5,unbreaking:3,mending:1}] 1",                      chance: 100 },
         { tier: "s", cmd: "give {player} mace[custom_name='God Mace',enchantments={wind_burst:1,density:5,unbreaking:3,mending:1}] 1",                                       chance: 97 },
 
         // ── S-TIER — Kits ────────────────────────────────────────────────
