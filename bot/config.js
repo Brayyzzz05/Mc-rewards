@@ -32,6 +32,7 @@ export default {
         { tier: "a", cmd: "give {player} diamond_chestplate[enchantments={protection:4,unbreaking:3,mending:1}] 1",                                                           chance: 10000 },
         { tier: "a", cmd: "give {player} golden_apple 32",                                                                                                                     chance: 8000 },
         { tier: "a", cmd: "give {player} ancient_debris 16",                                                                                                                   chance: 3000 },
+        { tier: "a", cmd: "give {player} breeze_rod 64",                                                                                                                          chance: 5000 },
         { tier: "a", cmd: "give {player} potion[potion_contents={potion:'minecraft:strength'}] 4 && give {player} potion[potion_contents={potion:'minecraft:instant_health'}] 4 && give {player} potion[potion_contents={potion:'minecraft:fire_resistance'}] 4", chance: 2000 },
 
         // ── S-TIER — God Weapons ─────────────────────────────────────────
