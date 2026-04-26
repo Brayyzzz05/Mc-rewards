@@ -8,7 +8,8 @@ import config from "../config.js";
     b:       3,
     a:       4,
     s:       5,
-    jackpot: 6
+    jackpot: 6,
+    secret:  7
   };
 
   const GUARANTEED_MAP = {
@@ -17,7 +18,8 @@ import config from "../config.js";
     guaranteedBTierPlus:       "b",
     guaranteedATierPlus:       "a",
     guaranteedSTierPlus:       "s",
-    guaranteedJackpotTierPlus: "jackpot"
+    guaranteedJackpotTierPlus: "jackpot",
+    guaranteedSecretTierPlus:  "secret"
   };
 
   function minTierForUser(userId) {
