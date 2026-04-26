@@ -11,7 +11,8 @@ import { SlashCommandBuilder } from "discord.js";
     b:       "B-Tier",
     a:       "A-Tier",
     s:       "S-Tier",
-    jackpot: "JACKPOT"
+    jackpot: "JACKPOT",
+  secret:  "[ SECRET ]"
   };
 
   export default {
