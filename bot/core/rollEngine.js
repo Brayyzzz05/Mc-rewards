@@ -3,19 +3,21 @@ import config from "../config.js";
   import { getUserLuck } from "./shopSystem.js";
 
   const TIER_RANK = {
-    d: 1,
-    c: 2,
-    b: 3,
-    a: 4,
-    s: 5
+    d:       1,
+    c:       2,
+    b:       3,
+    a:       4,
+    s:       5,
+    jackpot: 6
   };
 
   const GUARANTEED_MAP = {
-    guaranteedDPlus: "d",
-    guaranteedCPlus: "c",
-    guaranteedBPlus: "b",
-    guaranteedAPlus: "a",
-    guaranteedSPlus: "s"
+    guaranteedDPlus:       "d",
+    guaranteedCPlus:       "c",
+    guaranteedBPlus:       "b",
+    guaranteedAPlus:       "a",
+    guaranteedSPlus:       "s",
+    guaranteedJackpotPlus: "jackpot"
   };
 
   function minTierForUser(userId) {
