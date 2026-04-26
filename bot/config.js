@@ -51,7 +51,13 @@ export default {
         { tier: "s", cmd: "give {player} trident[custom_name='God Trident',enchantments={loyalty:3,channeling:1,impaling:5,unbreaking:3,mending:1}] 1",                      chance: 100 },
         { tier: "s", cmd: "give {player} mace[custom_name='God Mace',enchantments={wind_burst:1,density:5,unbreaking:3,mending:1}] 1",                                       chance: 97 },
 
-        // ── S-TIER — Kits ────────────────────────────────────────────────
+        // ── S-TIER — God Armor ────────────────────────────────────────────
+          { tier: "s", cmd: "give {player} netherite_helmet[custom_name='God Helmet',enchantments={protection:4,respiration:3,aqua_affinity:1,unbreaking:3,mending:1}] 1",     chance: 291 },
+          { tier: "s", cmd: "give {player} netherite_chestplate[custom_name='God Chestplate',enchantments={protection:4,unbreaking:3,mending:1}] 1",                           chance: 291 },
+          { tier: "s", cmd: "give {player} netherite_leggings[custom_name='God Leggings',enchantments={protection:4,unbreaking:3,mending:1}] 1",                               chance: 291 },
+          { tier: "s", cmd: "give {player} netherite_boots[custom_name='God Boots',enchantments={protection:4,feather_falling:4,depth_strider:3,unbreaking:3,mending:1}] 1",   chance: 291 },
+
+          // ── S-TIER — Kits ────────────────────────────────────────────────
         { tier: "s", cmd: "give {player} totem_of_undying 1 && give {player} golden_apple 16 && give {player} firework_rocket 32 && give {player} ender_pearl 16 && give {player} diamond_sword[enchantments={sharpness:5,unbreaking:3}] 1 && give {player} diamond_pickaxe[enchantments={efficiency:5,fortune:3}] 1 && give {player} enchanted_book[stored_enchantments={mending:1}] 1 && give {player} experience_bottle 16 && give {player} obsidian 8 && give {player} water_bucket 1", chance: 97 },
         { tier: "s", cmd: "give {player} beacon 1 && give {player} iron_block 164 && give {player} netherite_ingot 1 && give {player} glass 16 && give {player} obsidian 4 && give {player} iron_pickaxe[enchantments={efficiency:5,unbreaking:3}] 1", chance: 97 },
 
