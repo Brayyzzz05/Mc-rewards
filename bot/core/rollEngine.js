@@ -12,12 +12,12 @@ import config from "../config.js";
   };
 
   const GUARANTEED_MAP = {
-    guaranteedDPlus:       "d",
-    guaranteedCPlus:       "c",
-    guaranteedBPlus:       "b",
-    guaranteedAPlus:       "a",
-    guaranteedSPlus:       "s",
-    guaranteedJackpotPlus: "jackpot"
+    guaranteedDTierPlus:       "d",
+    guaranteedCTierPlus:       "c",
+    guaranteedBTierPlus:       "b",
+    guaranteedATierPlus:       "a",
+    guaranteedSTierPlus:       "s",
+    guaranteedJackpotTierPlus: "jackpot"
   };
 
   function minTierForUser(userId) {
