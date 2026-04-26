@@ -62,8 +62,8 @@ export default {
       guaranteedCPlus:       { enabled: false, userId: "1274645481217327108" },
       guaranteedBPlus:       { enabled: false, userId: "1274645481217327108" },
       guaranteedAPlus:       { enabled: false, userId: "1274645481217327108" },
-      guaranteedSPlus:       { enabled: false, userId: "1274645481217327108" },
-      guaranteedJackpotPlus: { enabled: true,  userId: "1274645481217327108" }
+      guaranteedSPlus:       { enabled: true, userId: "1274645481217327108" },
+      guaranteedJackpotPlus: { enabled: false,  userId: "1274645481217327108" }
     }
   };
   
