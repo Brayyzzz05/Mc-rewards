@@ -34,7 +34,7 @@ export default {
         { tier: "a", cmd: "give {player} ancient_debris 16",                                                                                                                   chance: 3000 },
         { tier: "a", cmd: "give {player} potion[potion_contents={potion:'minecraft:strength'}] 4 && give {player} potion[potion_contents={potion:'minecraft:instant_health'}] 4 && give {player} potion[potion_contents={potion:'minecraft:fire_resistance'}] 4", chance: 2000 },
 
-        // ── S-TIER — God Weapons  (~1 in 91k combined) ───────────────────
+        // ── S-TIER — God Weapons ─────────────────────────────────────────
         { tier: "s", cmd: "give {player} netherite_sword[custom_name='God Sword',enchantments={sharpness:5,looting:3,fire_aspect:2,unbreaking:3,mending:1}] 1",              chance: 5 },
         { tier: "s", cmd: "give {player} netherite_axe[custom_name='God Axe',enchantments={sharpness:5,efficiency:5,unbreaking:3,mending:1}] 1",                             chance: 4 },
         { tier: "s", cmd: "give {player} bow[custom_name='God Bow',enchantments={power:5,flame:1,infinity:1,unbreaking:3}] 1",                                               chance: 3 },
@@ -49,7 +49,15 @@ export default {
         { tier: "s", cmd: "give {player} beacon 1 && give {player} iron_block 164 && give {player} netherite_ingot 1 && give {player} glass 16 && give {player} obsidian 4 && give {player} iron_pickaxe[enchantments={efficiency:5,unbreaking:3}] 1", chance: 1 },
 
         // ── JACKPOT  (1 in 2,000,000) ────────────────────────────────────
-        { tier: "jackpot", cmd: "give {player} elytra[enchantments={unbreaking:3}] 1 && give {player} totem_of_undying 2 && give {player} golden_apple 32 && give {player} firework_rocket[fireworks={flight:3}] 64 && give {player} netherite_sword[enchantments={sharpness:5,looting:3,fire_aspect:2,unbreaking:3,mending:1}] 1 && give {player} netherite_pickaxe[enchantments={efficiency:5,fortune:3,unbreaking:3,mending:1}] 1 && give {player} enchanted_book[stored_enchantments={mending:1}] 1 && give {player} experience_bottle 32 && give {player} ender_pearl 16", chance: 1 }
+        { tier: "jackpot", cmd: "give {player} elytra[enchantments={unbreaking:3}] 1 && give {player} totem_of_undying 2 && give {player} golden_apple 32 && give {player} firework_rocket[fireworks={flight:3}] 64 && give {player} netherite_sword[enchantments={sharpness:5,looting:3,fire_aspect:2,unbreaking:3,mending:1}] 1 && give {player} netherite_pickaxe[enchantments={efficiency:5,fortune:3,unbreaking:3,mending:1}] 1 && give {player} enchanted_book[stored_enchantments={mending:1}] 1 && give {player} experience_bottle 32 && give {player} ender_pearl 16", chance: 1 },
+
+        // ── SECRET  (~1 in 10,000,000 each) ─────────────────────────────
+        // ElyMaceKit — Elytra + Mace PvP loadout with fireworks
+        { tier: "secret", cmd: "give {player} elytra[enchantments={unbreaking:3,mending:1}] 1 && give {player} mace[custom_name='God Mace',enchantments={wind_burst:1,density:5,unbreaking:3,mending:1}] 1 && give {player} firework_rocket[fireworks={flight:3}] 64 && give {player} netherite_helmet[enchantments={protection:4,unbreaking:3,mending:1}] 1 && give {player} netherite_chestplate[enchantments={protection:4,unbreaking:3,mending:1}] 1 && give {player} netherite_leggings[enchantments={protection:4,unbreaking:3,mending:1}] 1 && give {player} netherite_boots[enchantments={protection:4,feather_falling:4,unbreaking:3,mending:1}] 1 && give {player} totem_of_undying 2 && give {player} golden_apple 16 && give {player} ender_pearl 16", chance: 0.2 },
+        // CartKit — TNT Minecart raiding loadout
+        { tier: "secret", cmd: "give {player} tnt_minecart 16 && give {player} rail 64 && give {player} powered_rail 32 && give {player} activator_rail 16 && give {player} tnt 32 && give {player} flint_and_steel[enchantments={unbreaking:3}] 1 && give {player} redstone 64 && give {player} obsidian 16 && give {player} netherite_pickaxe[enchantments={efficiency:5,unbreaking:3,mending:1}] 1 && give {player} golden_apple 8", chance: 0.2 },
+        // NethPotKit — Nether Pot PvP loadout
+        { tier: "secret", cmd: "give {player} splash_potion[potion_contents={potion:'minecraft:strong_strength'}] 8 && give {player} splash_potion[potion_contents={potion:'minecraft:strong_swiftness'}] 8 && give {player} splash_potion[potion_contents={potion:'minecraft:strong_healing'}] 16 && give {player} splash_potion[potion_contents={potion:'minecraft:strong_regeneration'}] 8 && give {player} golden_apple 16 && give {player} netherite_sword[enchantments={sharpness:5,looting:3,unbreaking:3,mending:1}] 1 && give {player} netherite_helmet[enchantments={protection:4,unbreaking:3,mending:1}] 1 && give {player} netherite_chestplate[enchantments={protection:4,unbreaking:3,mending:1}] 1 && give {player} netherite_leggings[enchantments={protection:4,unbreaking:3,mending:1}] 1 && give {player} netherite_boots[enchantments={protection:4,feather_falling:4,unbreaking:3,mending:1}] 1", chance: 0.2 }
       ]
     },
 
@@ -62,8 +70,9 @@ export default {
       guaranteedCTierPlus:       { enabled: false, userId: "1274645481217327108" },
       guaranteedBTierPlus:       { enabled: false, userId: "1274645481217327108" },
       guaranteedATierPlus:       { enabled: false, userId: "1274645481217327108" },
-      guaranteedSTierPlus:       { enabled: true, userId: "1274645481217327108" },
-      guaranteedJackpotTierPlus: { enabled: false,  userId: "1274645481217327108" }
+      guaranteedSTierPlus:       { enabled: false, userId: "1274645481217327108" },
+      guaranteedJackpotTierPlus: { enabled: true,  userId: "1274645481217327108" },
+      guaranteedSecretTierPlus:  { enabled: false, userId: "1274645481217327108" }
     }
   };
   
