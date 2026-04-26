@@ -1,13 +1,13 @@
 export default {
     reward: {
       pool: [
-        // ── D-TIER  (46%) ────────────────────────────────────────────────
-        { tier: "d", cmd: "give {player} oak_log 32",                                                                                                                          chance: 182000 },
-        { tier: "d", cmd: "give {player} cooked_beef 16",                                                                                                                      chance: 166000 },
-        { tier: "d", cmd: "give {player} torch 32",                                                                                                                            chance: 157000 },
-        { tier: "d", cmd: "give {player} coal 16",                                                                                                                             chance: 149000 },
-        { tier: "d", cmd: "give {player} red_bed 1",                                                                                                                          chance: 141000 },
-        { tier: "d", cmd: "give {player} stone_pickaxe 1 && give {player} stone_axe 1",                                                                                       chance: 133000 },
+        // ── D-TIER  (70%) ────────────────────────────────────────────────
+        { tier: "d", cmd: "give {player} oak_log 32",                                                                                                                          chance: 275000 },
+        { tier: "d", cmd: "give {player} cooked_beef 16",                                                                                                                      chance: 250000 },
+        { tier: "d", cmd: "give {player} torch 32",                                                                                                                            chance: 237000 },
+        { tier: "d", cmd: "give {player} coal 16",                                                                                                                             chance: 225000 },
+        { tier: "d", cmd: "give {player} red_bed 1",                                                                                                                          chance: 213000 },
+        { tier: "d", cmd: "give {player} stone_pickaxe 1 && give {player} stone_axe 1",                                                                                       chance: 200000 },
 
         // ── C-TIER  (20%) ────────────────────────────────────────────────
         { tier: "c", cmd: "give {player} iron_ingot 32",                                                                                                                       chance: 90000 },
@@ -18,23 +18,23 @@ export default {
         { tier: "c", cmd: "give {player} glass 16",                                                                                                                           chance: 40000 },
         { tier: "c", cmd: "give {player} shield 1",                                                                                                                           chance: 35000 },
 
-        // ── B-TIER  (22%) ────────────────────────────────────────────────
-        { tier: "b", cmd: "give {player} diamond 8",                                                                                                                           chance: 112000 },
-        { tier: "b", cmd: "give {player} diamond_pickaxe[enchantments={efficiency:4,fortune:3,unbreaking:3}] 1",                                                              chance: 91000 },
-        { tier: "b", cmd: "give {player} gold_ingot 32",                                                                                                                      chance: 84000 },
-        { tier: "b", cmd: "give {player} experience_bottle 16",                                                                                                               chance: 70000 },
-        { tier: "b", cmd: "give {player} enchanted_book[stored_enchantments={mending:1}] 1",                                                                                  chance: 56000 },
-        { tier: "b", cmd: "give {player} bow[enchantments={power:3,unbreaking:3}] 1 && give {player} arrow 32",                                                               chance: 35000 },
+        // ── B-TIER  (6%) ─────────────────────────────────────────────────
+        { tier: "b", cmd: "give {player} diamond 8",                                                                                                                           chance: 30000 },
+        { tier: "b", cmd: "give {player} diamond_pickaxe[enchantments={efficiency:4,fortune:3,unbreaking:3}] 1",                                                              chance: 24000 },
+        { tier: "b", cmd: "give {player} gold_ingot 32",                                                                                                                      chance: 23000 },
+        { tier: "b", cmd: "give {player} experience_bottle 16",                                                                                                               chance: 19000 },
+        { tier: "b", cmd: "give {player} enchanted_book[stored_enchantments={mending:1}] 1",                                                                                  chance: 15000 },
+        { tier: "b", cmd: "give {player} bow[enchantments={power:3,unbreaking:3}] 1 && give {player} arrow 32",                                                               chance: 9000 },
 
-        // ── A-TIER  (11%) ────────────────────────────────────────────────
-        { tier: "a", cmd: "give {player} totem_of_undying 2",                                                                                                                  chance: 70000 },
-        { tier: "a", cmd: "give {player} enchanted_book[stored_enchantments={mending:1}] 1",                                                                                   chance: 56000 },
-        { tier: "a", cmd: "give {player} diamond_chestplate[enchantments={protection:4,unbreaking:3,mending:1}] 1",                                                           chance: 42000 },
-        { tier: "a", cmd: "give {player} golden_apple 32",                                                                                                                     chance: 35000 },
-        { tier: "a", cmd: "give {player} ancient_debris 16",                                                                                                                   chance: 14000 },
-        { tier: "a", cmd: "give {player} potion[potion_contents={potion:'minecraft:strength'}] 4 && give {player} potion[potion_contents={potion:'minecraft:instant_health'}] 4 && give {player} potion[potion_contents={potion:'minecraft:fire_resistance'}] 4", chance: 7000 },
+        // ── A-TIER  (4%) ─────────────────────────────────────────────────
+        { tier: "a", cmd: "give {player} totem_of_undying 2",                                                                                                                  chance: 25000 },
+        { tier: "a", cmd: "give {player} enchanted_book[stored_enchantments={mending:1}] 1",                                                                                   chance: 20000 },
+        { tier: "a", cmd: "give {player} diamond_chestplate[enchantments={protection:4,unbreaking:3,mending:1}] 1",                                                           chance: 15000 },
+        { tier: "a", cmd: "give {player} golden_apple 32",                                                                                                                     chance: 12000 },
+        { tier: "a", cmd: "give {player} ancient_debris 16",                                                                                                                   chance: 5000 },
+        { tier: "a", cmd: "give {player} potion[potion_contents={potion:'minecraft:strength'}] 4 && give {player} potion[potion_contents={potion:'minecraft:instant_health'}] 4 && give {player} potion[potion_contents={potion:'minecraft:fire_resistance'}] 4", chance: 3000 },
 
-        // ── S-TIER — God Weapons  (~1 in 100k combined) ──────────────────
+        // ── S-TIER — God Weapons  (~1 in 91k combined) ───────────────────
         { tier: "s", cmd: "give {player} netherite_sword[custom_name='God Sword',enchantments={sharpness:5,looting:3,fire_aspect:2,unbreaking:3,mending:1}] 1",              chance: 5 },
         { tier: "s", cmd: "give {player} netherite_axe[custom_name='God Axe',enchantments={sharpness:5,efficiency:5,unbreaking:3,mending:1}] 1",                             chance: 4 },
         { tier: "s", cmd: "give {player} bow[custom_name='God Bow',enchantments={power:5,flame:1,infinity:1,unbreaking:3}] 1",                                               chance: 3 },
@@ -48,7 +48,7 @@ export default {
         { tier: "s", cmd: "give {player} totem_of_undying 1 && give {player} golden_apple 16 && give {player} firework_rocket 32 && give {player} ender_pearl 16 && give {player} diamond_sword[enchantments={sharpness:5,unbreaking:3}] 1 && give {player} diamond_pickaxe[enchantments={efficiency:5,fortune:3}] 1 && give {player} enchanted_book[stored_enchantments={mending:1}] 1 && give {player} experience_bottle 16 && give {player} obsidian 8 && give {player} water_bucket 1", chance: 1 },
         { tier: "s", cmd: "give {player} beacon 1 && give {player} iron_block 164 && give {player} netherite_ingot 1 && give {player} glass 16 && give {player} obsidian 4 && give {player} iron_pickaxe[enchantments={efficiency:5,unbreaking:3}] 1", chance: 1 },
 
-        // ── JACKPOT  (1 in 2,000,000) ─────────────────────────────────────
+        // ── JACKPOT  (1 in 2,000,000) ────────────────────────────────────
         { tier: "jackpot", cmd: "give {player} elytra[enchantments={unbreaking:3}] 1 && give {player} totem_of_undying 2 && give {player} golden_apple 32 && give {player} firework_rocket[fireworks={flight:3}] 64 && give {player} netherite_sword[enchantments={sharpness:5,looting:3,fire_aspect:2,unbreaking:3,mending:1}] 1 && give {player} netherite_pickaxe[enchantments={efficiency:5,fortune:3,unbreaking:3,mending:1}] 1 && give {player} enchanted_book[stored_enchantments={mending:1}] 1 && give {player} experience_bottle 32 && give {player} ender_pearl 16", chance: 1 }
       ]
     },
