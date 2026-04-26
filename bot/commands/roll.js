@@ -6,11 +6,12 @@ import { SlashCommandBuilder } from "discord.js";
   import { logError } from "../utils/logger.js";
 
   const TIER_LABEL = {
-    d: "D-Tier",
-    c: "C-Tier",
-    b: "B-Tier",
-    a: "A-Tier",
-    s: "★ S-TIER ★"
+    d:       "D-Tier",
+    c:       "C-Tier",
+    b:       "B-Tier",
+    a:       "A-Tier",
+    s:       "S-Tier",
+    jackpot: "JACKPOT"
   };
 
   export default {
@@ -56,7 +57,9 @@ import { SlashCommandBuilder } from "discord.js";
                 : "Your reward is queued.";
 
           return interaction.editReply(
-            `**${tierTxt}** rolled for **${mcName}**\n\`${result.cmd}\`\n${
+            `**${tierTxt}** rolled for **${mcName}**
+\`${result.cmd}\`
+${
               delivery.delivered ? "Sent in-game now." : delivery.queued ? queuedReason : "Could not queue reward, contact an admin."
             }`
           );
