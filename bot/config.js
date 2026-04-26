@@ -1,4 +1,4 @@
-export default {
+ export default {
     reward: {
       pool: [
         // ── D-TIER  (80%) ────────────────────────────────────────────────
@@ -71,8 +71,8 @@ export default {
       guaranteedBTierPlus:       { enabled: false, userId: "1274645481217327108" },
       guaranteedATierPlus:       { enabled: false, userId: "1274645481217327108" },
       guaranteedSTierPlus:       { enabled: false, userId: "1274645481217327108" },
-      guaranteedJackpotTierPlus: { enabled: true,  userId: "1274645481217327108" },
-      guaranteedSecretTierPlus:  { enabled: false, userId: "1274645481217327108" }
+      guaranteedJackpotTierPlus: { enabled: false,  userId: "1274645481217327108" },
+      guaranteedSecretTierPlus:  { enabled: true, userId: "1274645481217327108" }
     }
   };
   
