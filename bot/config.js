@@ -58,12 +58,12 @@ export default {
     },
 
     guaranteedRewards: {
-      guaranteedDPlus:       { enabled: false, userId: "1274645481217327108" },
-      guaranteedCPlus:       { enabled: false, userId: "1274645481217327108" },
-      guaranteedBPlus:       { enabled: false, userId: "1274645481217327108" },
-      guaranteedAPlus:       { enabled: false, userId: "1274645481217327108" },
-      guaranteedSPlus:       { enabled: true, userId: "1274645481217327108" },
-      guaranteedJackpotPlus: { enabled: false,  userId: "1274645481217327108" }
+      guaranteedDTierPlus:       { enabled: false, userId: "1274645481217327108" },
+      guaranteedCTierPlus:       { enabled: false, userId: "1274645481217327108" },
+      guaranteedBTierPlus:       { enabled: false, userId: "1274645481217327108" },
+      guaranteedATierPlus:       { enabled: false, userId: "1274645481217327108" },
+      guaranteedSTierPlus:       { enabled: true, userId: "1274645481217327108" },
+      guaranteedJackpotTierPlus: { enabled: false,  userId: "1274645481217327108" }
     }
   };
   
