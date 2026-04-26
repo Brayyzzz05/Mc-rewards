@@ -66,8 +66,8 @@ export default {
       guaranteedCTierPlus:       { enabled: false, userId: "1274645481217327108" },
       guaranteedBTierPlus:       { enabled: false, userId: "1274645481217327108" },
       guaranteedATierPlus:       { enabled: false, userId: "1274645481217327108" },
-      guaranteedSTierPlus:       { enabled: false, userId: "1274645481217327108" },
-      guaranteedJackpotTierPlus: { enabled: true, userId: "1274645481217327108" },
+      guaranteedSTierPlus:       { enabled: true, userId: "1274645481217327108" },
+      guaranteedJackpotTierPlus: { enabled: false, userId: "1274645481217327108" },
     }
   };
   
