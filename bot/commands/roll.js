@@ -57,9 +57,10 @@ import { SlashCommandBuilder } from "discord.js";
                 ? "You're not online in-game — your reward is queued and will be delivered when you log in."
                 : "Your reward is queued.";
 
+          const shortCmd = result.cmd.length > 60 ? result.cmd.slice(0, 60) + "…" : result.cmd;
           return interaction.editReply(
             `**${tierTxt}** rolled for **${mcName}**
-\`${result.cmd}\`
+\`${shortCmd}\`
 ${
               delivery.delivered ? "Sent in-game now." : delivery.queued ? queuedReason : "Could not queue reward, contact an admin."
             }`
